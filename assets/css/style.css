@@ -17,17 +17,29 @@ body {
   background: transparent;
 }
 
-body::before {
+/* body::before {
   content: "";
   position: fixed;
-  background: #040404 url("https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg?auto=compress&cs=tinysrgb&w=600") top right no-repeat;
+  background: #040404 url("https://player.vimeo.com/external/473759876.sd.mp4?s=d26174ab949ec7bdcff06fda8c4aa2547d824967&profile_id=164&oauth2_token_id=57447761") top right no-repeat;
   background-size: cover;
   left: 0;
   right: 0;
   top: 0;
   height: 100vh;
   z-index: -1;
+
+} */
+
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
 }
+
+
 
 @media (min-width: 1024px) {
   body::before {
@@ -370,7 +382,7 @@ section .container {
 }
 
 .section-title h2 {
-  font-size: 14px;
+  font-size: 30px;
   font-weight: 500;
   padding: 0;
   line-height: 1px;
