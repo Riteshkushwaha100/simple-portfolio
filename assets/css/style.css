@@ -9,13 +9,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+html , body {
   font-family: "Open Sans", sans-serif;
   background-color: #040404;
   color: #fff;
   position: relative;
   background: transparent;
   cursor: none;
+  margin: 0;
+  height: 100vh;
 }
 
 /* body::before {
@@ -32,11 +34,11 @@ body {
 } */
 
 #video-background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: -1;
 }
@@ -207,6 +209,15 @@ h6 {
   }
 }
 
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover; /* This ensures the video fills the screen */
+}
 
 /* fire particle */
 
