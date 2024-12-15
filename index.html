@@ -38,20 +38,17 @@
 
 <body>
   <video autoplay muted loop  id="video-background">
-    <source src="./video/earth.mp4" type="video/mp4">
+    <source src="./video/alltechv1.mp4" type="video/mp4">
   </video>
 
   <!-- <video autoplay muted loop id="video-background">
     <source src="https://player.vimeo.com/external/373038800.sd.mp4?s=2f985b88bd0573de24611b1c68134f79119249dd&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
   </video> -->
 
-  
-
   <!-- <audio id="audioplayer" controls autoplay loop style="display: none;" >
     <source src="./audio/zinda_ho_tum.mp3" type="audio/mpeg" >
     <source src="./audio/bollywood_ZNMD-2011-Toh-Zinda-Ho-Tum.ogg" type="video/ogg">
   </audio> -->
-
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -872,6 +869,79 @@
     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
   </div>
 
+  <script>
+    const videoElement = document.getElementById('video-background');
+
+    // Set the playback speed to 2x (double speed)
+    videoElement.playbackRate = 2; // Change to 2x speed. Use 3, 4, etc. for faster speeds.
+  </script>
+
+  <!-- fire particle -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+        createFire(e.pageX, e.pageY);
+        updateCursorPosition(e.pageX, e.pageY);
+        createRocketTail(e.pageX, e.pageY); // Create rocket tail on move
+    });
+
+    function createFire(x, y) {
+        const particle = document.createElement('div');
+        particle.classList.add('fire-particle');
+
+        // Random size and position
+        const size = Math.random() * 10 + 5; // Random size between 5px and 15px
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        // Random position offset
+        const xOffset = (Math.random() - 0.5) * 30; // Horizontal variation (-15 to +15)
+        const yOffset = (Math.random() - 0.5) * 30; // Vertical variation (-15 to +15)
+
+        particle.style.left = `${x + xOffset}px`;
+        particle.style.top = `${y + yOffset}px`;
+
+        // Random color for more fire-like effect
+        const colors = ['#FF4500', '#FFA500', '#FF6347', '#FFD700'];
+        particle.style.background = `radial-gradient(circle, ${randomColor(colors)}, transparent)`;
+
+        document.body.appendChild(particle);
+
+        // Remove particle after animation is complete (1s)
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
+    }
+
+    function randomColor(colors) {
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    let cursor = document.createElement('div');
+    cursor.classList.add('rocket-cursor');
+    document.body.appendChild(cursor);
+
+    function updateCursorPosition(x, y) {
+        cursor.style.left = `${x - cursor.offsetWidth / 2}px`;
+        cursor.style.top = `${y - cursor.offsetHeight / 2}px`;
+    }
+
+    // Function to create rocket tail effect
+    function createRocketTail(x, y) {
+        const tail = document.createElement('div');
+        tail.classList.add('rocket-tail');
+        tail.style.left = `${x + 15}px`; // Position the tail to be behind the cursor
+        tail.style.top = `${y + 10}px`; // Position the tail slightly below the rocket
+        document.body.appendChild(tail);
+
+        // Remove tail after animation (tailMovement lasts 0.5s)
+        setTimeout(() => {
+            tail.remove();
+        }, 500);
+    }
+</script>
+
+  <!-- fire particles ends  -->
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -885,5 +955,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
